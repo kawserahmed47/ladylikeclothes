@@ -23,6 +23,114 @@ class FrontendController extends Controller
         // $data['productUnits'] = ProductUnit::with(array('product'=>function($q){
         //     $q->with('brand', 'category')->get();
         // }))->get();
-        return view('frontend.master', $data);
+        return view('frontend.pages.index', $data);
     }
+
+    public function about(){
+        $data = array();
+        return view('frontend.pages.about', $data);
+    }
+
+
+    public function contact(){
+
+        $data = array();
+        return view('frontend.pages.contact', $data);
+
+    }
+
+    public function wishlist(){
+        $data = array();
+        return view('frontend.pages.wishlist', $data);
+    }
+
+    public function userProfile(){
+        $data = array();
+        return view('frontend.pages.profile', $data);
+    }
+
+
+    public function cart(){
+        $data = array();
+        return view('frontend.pages.cart', $data);
+    }
+
+    public function checkout(){
+        $data = array();
+        return view('frontend.pages.checkout', $data);
+    }
+
+    public function trackMyOrder(){
+        $data = array();
+        return view('frontend.pages.track_order', $data);
+    }
+
+
+    public function products(){
+        $data = array();
+        return view('frontend.pages.products', $data);
+        
+    }
+
+    public function productsByCategory($slug){
+        $data = array();
+        return view('frontend.pages.products_by_category', $data);
+    }
+
+
+    public function productDetails(){
+        $data = array();
+        return view('frontend.pages.product_details', $data);
+        
+    }
+
+
+    public function howToShop(){
+        $data = array();
+        return view('frontend.pages.how_to_shop', $data);
+    }
+
+    public function faq(){
+
+        $data = array();
+        return view('frontend.pages.faq', $data);
+
+    }
+
+    public function login(){
+        $data = array();
+        return view('frontend.pages.login', $data);
+    }
+
+    public function paymentMethod(){
+        $data = array();
+        return view('frontend.pages.payment_methods', $data);
+    }
+
+    public function moneyBackGuaranty(){
+        $data = array();
+        return view('frontend.pages.money_back', $data);
+    }
+
+    public function returns(){
+        $data = array();
+        return view('frontend.pages.return', $data);
+    }
+
+    public function shipping(){
+        $data = array();
+        return view('frontend.pages.shipping', $data);
+    }
+
+    public function conditions(){
+        $data = array();
+        return view('frontend.pages.conditions', $data);
+    }
+
+    public function privacy(){
+        $data = array();
+        return view('frontend.pages.how_to_shop', $data);
+    }
+
+
 }
