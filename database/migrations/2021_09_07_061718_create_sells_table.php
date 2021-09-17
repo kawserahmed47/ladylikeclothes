@@ -19,8 +19,7 @@ class CreateSellsTable extends Migration
             $table->bigInteger('sell_no');
             $table->bigInteger('customer_id')->nullable();
             $table->bigInteger('customer_id_no')->nullable();
-            $table->bigInteger('supplier_id');
-            $table->bigInteger('supplier_id_no');
+          
 
 
             $table->string('customer_name')->nullable();

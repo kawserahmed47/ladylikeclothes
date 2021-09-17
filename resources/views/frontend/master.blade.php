@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg">
-    <link rel="manifest" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg">
+    {{-- <link rel="manifest" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg"> --}}
     <link rel="mask-icon" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg" color="#666666">
     <link rel="shortcut icon" href="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg">
 
@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/demos/demo-7.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/skins/skin-demo-6.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/demos/demo-6.css">
+
+
     @stack('css')
 </head>
 

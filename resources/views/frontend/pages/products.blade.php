@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="page-header page-header-big text-center" style="background-image: url('{{asset('frontend/assets')}}/images/contact-header-bg.jpg')">
-        <h1 class="page-title text-white">Contact us<span class="text-white">keep in touch with us</span></h1>
+        <h1 class="page-title text-white">SHOP<span class="text-white">get all in here</span></h1>
     </div><!-- End .page-header -->
 </div><!-- End .container -->
 
@@ -14,7 +14,7 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Contact us</li>
+            <li class="breadcrumb-item active" aria-current="page">Shop</li>
         </ol>
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
@@ -98,8 +98,8 @@
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
                                     <span class="product-label label-new">New</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-4.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-4.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -117,7 +117,7 @@
                                     <div class="product-cat">
                                         <a href="#">Women</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Brown paperbag waist pencil skirt</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Brown paperbag waist pencil skirt</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $60.00
                                     </div><!-- End .product-price -->
@@ -130,14 +130,14 @@
 
                                     <div class="product-nav product-nav-thumbs">
                                         <a href="#" class="active">
-                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-4-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-4-2-thumb.jpg" alt="product desc">
                                         </a>
 
                                         <a href="#">
-                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-4-3-thumb.jpg" alt="product desc">
                                         </a>
                                     </div><!-- End .product-nav -->
                                 </div><!-- End .product-body -->
@@ -147,8 +147,8 @@
                         <div class="col-6 col-md-4 col-lg-4">
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-5.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-5.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -166,7 +166,7 @@
                                     <div class="product-cat">
                                         <a href="#">Dresses</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Dark yellow lace cut out swing dress</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Dark yellow lace cut out swing dress</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $84.00
                                     </div><!-- End .product-price -->
@@ -179,10 +179,10 @@
 
                                     <div class="product-nav product-nav-thumbs">
                                         <a href="#" class="active">
-                                            <img src="assets/images/products/product-5-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-5-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-5-2-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-5-2-thumb.jpg" alt="product desc">
                                         </a>
                                     </div><!-- End .product-nav -->
                                 </div><!-- End .product-body -->
@@ -193,8 +193,8 @@
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
                                     <span class="product-label label-out">Out of Stock</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-6.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-6.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -212,7 +212,7 @@
                                     <div class="product-cat">
                                         <a href="#">Jackets</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="out-price">$120.00</span>
                                     </div><!-- End .product-price -->
@@ -229,8 +229,8 @@
                         <div class="col-6 col-md-4 col-lg-4">
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-7.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-7.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -248,7 +248,7 @@
                                     <div class="product-cat">
                                         <a href="#">Jeans</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Blue utility pinafore denim dress</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Blue utility pinafore denim dress</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $76.00
                                     </div><!-- End .product-price -->
@@ -266,8 +266,8 @@
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
                                     <span class="product-label label-new">New</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-8.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-8.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -285,7 +285,7 @@
                                     <div class="product-cat">
                                         <a href="#">Shoes</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Beige knitted elastic runner shoes</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Beige knitted elastic runner shoes</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $84.00
                                     </div><!-- End .product-price -->
@@ -298,10 +298,10 @@
 
                                     <div class="product-nav product-nav-thumbs">
                                         <a href="#" class="active">
-                                            <img src="assets/images/products/product-8-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-8-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-8-2-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-8-2-thumb.jpg" alt="product desc">
                                         </a>
                                     </div><!-- End .product-nav -->
                                 </div><!-- End .product-body -->
@@ -311,8 +311,8 @@
                         <div class="col-6 col-md-4 col-lg-4">
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-9.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-9.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -330,7 +330,7 @@
                                     <div class="product-cat">
                                         <a href="#">Bags</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Orange saddle lock front chain cross body bag</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Orange saddle lock front chain cross body bag</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $84.00
                                     </div><!-- End .product-price -->
@@ -343,13 +343,13 @@
 
                                     <div class="product-nav product-nav-thumbs">
                                         <a href="#" class="active">
-                                            <img src="assets/images/products/product-9-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-9-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-9-2-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-9-2-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-9-3-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-9-3-thumb.jpg" alt="product desc">
                                         </a>
                                     </div><!-- End .product-nav -->
                                 </div><!-- End .product-body -->
@@ -360,8 +360,8 @@
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
                                     <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-11.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-11.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -379,7 +379,7 @@
                                     <div class="product-cat">
                                         <a href="#">Shoes</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Light brown studded Wide fit wedges</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Light brown studded Wide fit wedges</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $110.00
                                     </div><!-- End .product-price -->
@@ -392,14 +392,14 @@
 
                                     <div class="product-nav product-nav-thumbs">
                                         <a href="#" class="active">
-                                            <img src="assets/images/products/product-11-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-11-thumb.jpg" alt="product desc">
                                         </a>
                                         <a href="#">
-                                            <img src="assets/images/products/product-11-2-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-11-2-thumb.jpg" alt="product desc">
                                         </a>
 
                                         <a href="#">
-                                            <img src="assets/images/products/product-11-3-thumb.jpg" alt="product desc">
+                                            <img src="{{asset('frontend/assets')}}/images/products/product-11-3-thumb.jpg" alt="product desc">
                                         </a>
                                     </div><!-- End .product-nav -->
                                 </div><!-- End .product-body -->
@@ -409,8 +409,8 @@
                         <div class="col-6 col-md-4 col-lg-4">
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-10.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-10.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -428,7 +428,7 @@
                                     <div class="product-cat">
                                         <a href="#">Jumpers</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Yellow button front tea top</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Yellow button front tea top</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $56.00
                                     </div><!-- End .product-price -->
@@ -445,8 +445,8 @@
                         <div class="col-6 col-md-4 col-lg-4">
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="assets/images/products/product-12.jpg" alt="Product image" class="product-image">
+                                    <a href="{{url('/product-details', 1)}}">
+                                        <img src="{{asset('frontend/assets')}}/images/products/product-12.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -464,7 +464,7 @@
                                     <div class="product-cat">
                                         <a href="#">Bags</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Black soft RI weekend travel bag</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{url('/product-details', 1)}}">Black soft RI weekend travel bag</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         $68.00
                                     </div><!-- End .product-price -->
@@ -742,7 +742,31 @@
                                         <span id="filter-price-range"></span>
                                     </div><!-- End .filter-price-text -->
 
-                                    <div id="price-slider"></div><!-- End #price-slider -->
+                                    <div id="price-slider">
+
+
+                                        <div class="filter-item">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="price_range" class="custom-control-input" id="price-range-1">
+                                                <label class="custom-control-label" for="price-range-1">100 - 500</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .filter-item -->
+    
+                                        <div class="filter-item">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio"  name="price_range" class="custom-control-input" id="price-range-2">
+                                                <label class="custom-control-label" for="price-range-2">500 - 1000</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .filter-item -->
+    
+                                        <div class="filter-item">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio"  name="price_range" class="custom-control-input" id="price-range-3">
+                                                <label class="custom-control-label" for="price-range-3">1000 - 2000</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .filter-item -->
+                                        
+                                    </div><!-- End #price-slider -->
                                 </div><!-- End .filter-price -->
                             </div><!-- End .widget-body -->
                         </div><!-- End .collapse -->

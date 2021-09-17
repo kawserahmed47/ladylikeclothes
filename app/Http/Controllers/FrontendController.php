@@ -78,7 +78,7 @@ class FrontendController extends Controller
     }
 
 
-    public function productDetails(){
+    public function productDetails($slug){
         $data = array();
         return view('frontend.pages.product_details', $data);
         
@@ -129,7 +129,7 @@ class FrontendController extends Controller
 
     public function privacy(){
         $data = array();
-        return view('frontend.pages.how_to_shop', $data);
+        return view('frontend.pages.privacy', $data);
     }
 
 

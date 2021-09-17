@@ -16,37 +16,21 @@
                 <li>
                     <a href="category.html">Shop</a>
                     <ul>
-                        <li><a href="category-list.html">Shop List</a></li>
-                        <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
-                        <li><a href="category.html">Shop Grid 3 Columns</a></li>
-                        <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
-                        <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
-                        <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
-                        <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
-                        <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="#">Lookbook</a></li>
+                        <li><a href="{{url('/products-by-category/sharee')}}">Sharee</a></li>
+                        <li><a href="{{url('/products-by-category/joypuri')}}">&nbsp;-Joypuri</a></li>
+                        <li><a href="{{url('/products-by-category/sharee')}}">3 Pcs</a></li>
+                        <li><a href="{{url('/products-by-category/joypuri')}}"> &nbsp;-Batik</a></li>
                     </ul>
                 </li>
              
-                {{-- <li>
-                    <a href="blog.html">Blog</a>
-
-                    <ul>
-                        <li><a href="blog.html">Classic</a></li>
-                        <li><a href="blog-listing.html">Listing</a></li>
-                      
-                    </ul>
-                </li> --}}
+           
                 <li>
-                    <a href="elements-list.html">About US</a>
+                    <a href="{{url('about-us')}}">About US</a>
                    
                 </li>
 
                 <li>
-                    <a href="elements-list.html">Contact US</a>
+                    <a href="{{url('contact-us')}}">Contact US</a>
                    
                 </li>
             </ul>

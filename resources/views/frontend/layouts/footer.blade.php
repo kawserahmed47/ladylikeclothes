@@ -9,17 +9,21 @@
                         
                         <div class="widget-about-info">
                             <div class="row">
-                                <div class="col-sm-6 col-md-4">
+                                <div class="col-sm-12 col-md-12">
                                     <span class="widget-about-title">Got Question? Call us 24/7</span>
                                     <a href="tel:+8801311796531">+88 01311-796531 </a>
                                 </div><!-- End .col-sm-6 -->
-                                <div class="col-sm-6 col-md-8">
+                             
+                            </div><!-- End .row -->
+                            <div class="row mt-3">
+                                <div class="col-sm-12 col-md-12">
                                     <span class="widget-about-title">Payment Method</span>
                                     <figure class="footer-payments">
-                                        <img src="{{asset('frontend/assets')}}/images/payments.png" alt="Payment methods" width="272" height="20">
+                                        <img src="{{asset('frontend/assets')}}/images/desi-payment.png" alt="Payment methods">
                                     </figure><!-- End .footer-payments -->
                                 </div><!-- End .col-sm-6 -->
-                            </div><!-- End .row -->
+
+                            </div>
                         </div><!-- End .widget-about-info -->
                     </div><!-- End .widget about-widget -->
                 </div><!-- End .col-sm-12 col-lg-4 -->
@@ -32,8 +36,8 @@
                             <li><a href="{{url('/about-us')}}">About LADYLIKE</a></li>
                             <li><a href="{{url('/how-to-shop')}}">How to shop on LADYLIKE</a></li>
                             <li><a href="{{url('/faq')}}">FAQ</a></li>
-                            <li><a href="{{url('/about-us')}}">Contact us</a></li>
-                            <li><a href="{{url('/signin')}}">Log in</a></li>
+                            <li><a href="{{url('/contact-us')}}">Contact us</a></li>
+                            <li><a href="{{url('/sign-in')}}">Log in</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-4 col-lg-2 -->
@@ -43,12 +47,12 @@
                         <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="{{url('/')}}">Payment Methods</a></li>
-                            <li><a href="{{url('/')}}">Money-back guarantee!</a></li>
-                            <li><a href="{{url('/')}}">Returns</a></li>
-                            <li><a href="{{url('/')}}">Shipping</a></li>
-                            <li><a href="{{url('/')}}">Terms and conditions</a></li>
-                            <li><a href="{{url('/')}}">Privacy Policy</a></li>
+                            <li><a href="{{url('/payment-method')}}">Payment Methods</a></li>
+                            <li><a href="{{url('/money-back-guaranty')}}">Money-back guarantee!</a></li>
+                            <li><a href="{{url('/returns-policy')}}">Returns</a></li>
+                            <li><a href="{{url('/shipping-information')}}">Shipping</a></li>
+                            <li><a href="{{url('/terms-and-conditions')}}">Terms and conditions</a></li>
+                            <li><a href="{{url('/privacy-policy')}}">Privacy Policy</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-4 col-lg-2 -->
@@ -58,9 +62,9 @@
                         <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="{{url('/')}}">Sign In</a></li>
-                            <li><a href="{{url('/')}}">View Cart</a></li>
-                            <li><a href="{{url('/')}}">My Wishlist</a></li>
+                            <li><a href="{{url('/sign-in')}}">Sign In</a></li>
+                            <li><a href="{{url('/view-cart')}}">View Cart</a></li>
+                            <li><a href="{{url('/wishlist')}}">My Wishlist</a></li>
                             <li><a href="{{url('/')}}">Track My Order</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->

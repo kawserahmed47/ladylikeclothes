@@ -25,7 +25,7 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>
+                            <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>My Wishlist <span>(0)</span></a></li>
                             <li><a href="#signin-modal" data-toggle="modal"><i class="fa fa-sign-in"></i>Login /</a></li>
                         </ul>
                     </li>
@@ -63,7 +63,7 @@
                             <a href="{{url('/')}}" class="sf-with-ul"> <i class="fa fa-home"></i> Home</a>
                         </li>
                         <li>
-                            <a href="{{url('/shop')}}" class="sf-with-ul">Shop</a>
+                            <a href="{{url('/shop')}}" class="sf-with-ul"> <i class="fa fa-list"></i> Shop</a>
 
                             <div class="megamenu megamenu-md">
                                 <div class="row no-gutters">
@@ -77,6 +77,7 @@
                                                         <li><a href="{{url('/products-by-category/tangail')}}">Tangail</a></li>
                                                     </ul>
 
+
                                                    
                                                 </div><!-- End .col-md-6 -->
 
@@ -86,6 +87,8 @@
                                                         <li><a href="{{url('/products-by-category/batik')}}">Batik</a></li>
                                                         <li><a href="{{url('/products-by-category/jorjet')}}">Jorjet</a></li>
                                                     </ul>
+
+
                                                    
                                                 </div><!-- End .col-md-6 -->
                                             </div><!-- End .row -->
@@ -100,12 +103,12 @@
                        
                       
                         <li>
-                            <a href="{{url('/about-us')}}" class="sf-with-ul">ABOUT US</a>
+                            <a href="{{url('/about-us')}}" class="sf-with-ul"> <i class="fa fa-address-card"></i> ABOUT US</a>
 
                           
                         </li>
                         <li>
-                            <a href="{{url('/contact-us')}}" class="sf-with-ul">CONTACT US</a>
+                            <a href="{{url('/contact-us')}}" class="sf-with-ul"> <i class="fa fa-paper-plane"></i> CONTACT US</a>
 
                           
                         </li>
@@ -130,7 +133,7 @@
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                         <i class="icon-shopping-cart"></i>
-                        <span class="cart-count">2</span>
+                        <span class="cart-count">0</span>
                     </a>
 
                 @include('frontend.layouts.cart')

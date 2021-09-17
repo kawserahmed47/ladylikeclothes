@@ -16,26 +16,32 @@ class CreateCompanyInformationTable extends Migration
         Schema::create('company_information', function (Blueprint $table) {
             $table->id();
             
-            $table->string('name');
-            $table->string('mobile');
-            $table->string('phone');
-            $table->string('contact');
-            $table->string('care_line');
-            $table->string('email');
+            $table->string('name')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('care_line')->nullable();
+            $table->string('email')->nullable();
 
-            $table->string('facebook');
-            $table->string('instagram');
-            $table->string('whats_app');
-            $table->string('twitter');
-            $table->string('linked_in');
-            $table->string('youtube');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('whats_app')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linked_in')->nullable();
+            $table->string('youtube')->nullable();
 
-            $table->text('short_description');
-            $table->text('description');
-            $table->text('mission');
-            $table->text('vision');
-            $table->text('message');
-            $table->text('address');
+            $table->text('short_description')->nullable();
+            $table->text('description')->nullable();
+            $table->text('mission')->nullable();
+            $table->text('vision')->nullable();
+            $table->text('message')->nullable();
+            $table->text('address')->nullable();
+
+            $table->string('logo_1')->nullable();
+            $table->string('logo_2')->nullable();
+            $table->string('logo_3')->nullable();
+
+
 
             $table->bigInteger('created_by');
             $table->bigInteger('updated_by')->nullable();

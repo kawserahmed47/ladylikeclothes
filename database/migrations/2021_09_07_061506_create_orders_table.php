@@ -17,13 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
 
             $table->bigInteger('order_no');
-            $table->bigInteger('customer_id');
-            $table->bigInteger('customer_id_no');
-            $table->bigInteger('supplier_id');
-            $table->bigInteger('supplier_id_no');
+            $table->bigInteger('customer_id')->nullable();
+            $table->bigInteger('customer_id_no')->nullable();
 
 
-            $table->string('customer_name');
+            $table->string('customer_name')->nullable();
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
@@ -49,7 +47,7 @@ class CreateOrdersTable extends Migration
 
             $table->string('description')->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->bigInteger('created_by');
+            $table->bigInteger('created_by')->nullable();
             $table->bigInteger('updated_by')->nullable();
 
 

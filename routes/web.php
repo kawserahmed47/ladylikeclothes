@@ -33,12 +33,18 @@ Route::get('/how-to-shop', [FrontendController::class, 'howToShop'])->name('howT
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/sign-in', [FrontendController::class, 'login'])->name('sign-in');
 Route::get('/shop', [FrontendController::class, 'products'])->name('products');
+Route::get('/products-by-category/{slug}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
+Route::get('/product-details/{slug}', [FrontendController::class, 'productDetails'])->name('productDetails');
+Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('wishlist');
 
+Route::get('/payment-method', [FrontendController::class, 'paymentMethod'])->name('payment.method');
+Route::get('/money-back-guaranty', [FrontendController::class, 'moneyBackGuaranty'])->name('moneyBackGuaranty');
+Route::get('/returns-policy', [FrontendController::class, 'returns'])->name('returnsPolicy');
+Route::get('/shipping-information', [FrontendController::class, 'shipping'])->name('shipping');
+Route::get('/terms-and-conditions', [FrontendController::class, 'conditions'])->name('conditions');
+Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy');
 
-// Route::get('/products-by-category/{slug}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
-
-
-
+Route::get('/track-order', [FrontendController::class, 'trackMyOrder'])->name('trackOrder');
 
 
 Auth::routes();
@@ -61,7 +67,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 	Route::get('/sells/success/{sell_no}', [SellController::class, 'success'])->name('sell.success');
 	Route::get('/cart-bar-load', [CartController::class, 'cartBarLoad' ]);
 
-	Route::get('/cart', [CartController::class, 'viewCart']);
+	Route::get('/view-cart', [CartController::class, 'viewCart']);
 	Route::get('/view-shop-cart', [CartController::class, 'dynamicCartLoad']);
 	Route::get('/checkout', [CartController::class, 'checkout']);
 

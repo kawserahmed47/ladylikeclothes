@@ -17,13 +17,13 @@ class CreateDraftsTable extends Migration
             $table->id();
 
             $table->bigInteger('draft_no');
-            $table->bigInteger('customer_id');
-            $table->bigInteger('customer_id_no');
-            $table->bigInteger('supplier_id');
-            $table->bigInteger('supplier_id_no');
+            $table->bigInteger('customer_id')->nullable();
+            $table->bigInteger('customer_id_no')->nullable();
+         
 
 
-            $table->string('customer_name');
+
+            $table->string('customer_name')->nullable();
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
