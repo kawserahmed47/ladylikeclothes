@@ -20,86 +20,196 @@
 
               <div class="card-body ">
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Product') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <select name="product_id" id="product" class="form-control" required>
-                        <option value="">--</option>
-                        @if ($products)
-                          @foreach ($products as $product)
+                <div class="productUnit">
+
+                  <div class="row">
+
+
+                    <div class="col-sm-12">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Product') }} <span> <a class="btn btn-link btn-sm btn-primary" rel="tooltip" title="Add New" href="{{route('product.create')}}"> <i class="fa fa-plus"></i></a> </span> </label>
+  
+                        <select name="product_id" class="form-control" id="product" required>
+                          <option value="">--</option>
+                          @if ($products)
+                            @foreach ($products as $product)
                               <option value="{{$product->id}}">{{$product->name}}</option>
-                          @endforeach
-                        @endif
-                      </select>
+  
+                            @endforeach
+                              
+                          @endif
+                        </select>   
+                        
+                        
+                      </div>
+  
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Supplier') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <select name="supplier_id" id="supplier" required class="form-control">
-                        <option value="">--</option>
-                        @if ($suppliers)
-                          @foreach ($suppliers as $supplier)
+                 
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Supplier') }}</label>
+  
+                        <select name="supplier_id" class="form-control" id="supplier" required>
+                          <option value="">--</option>
+                          @if ($suppliers)
+                            @foreach ($suppliers as $supplier)
                               <option value="{{$supplier->id}}">{{$supplier->name}}</option>
-                          @endforeach
-                        @endif
-
-                      </select>
-                                         
-                  </div>
-                  </div>
-                </div>
-         
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="" required="true" aria-required="true"/>
+  
+                            @endforeach
+                              
+                          @endif
+                        </select>   
+                        
+                        
+                      </div>
+  
                     </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Stock Quantity') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="available_stock" id="input-name" type="text" placeholder="{{ __('Stock Quantity') }}" value="" required="true" aria-required="true"/>
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Size') }}</label>
+  
+                        <select name="product_size_id" class="form-control" id="size" required>
+                          <option value="">--</option>
+                          @if ($productSizes)
+                            @foreach ($productSizes as $productSize)
+                              <option value="{{$productSize->id}}">{{$productSize->name}}</option>
+  
+                            @endforeach
+                              
+                          @endif
+                        </select>   
+                        
+                        
+                      </div>
+  
                     </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Supplier Price') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="supplier_price" id="input-name" type="text" placeholder="{{ __('Supplier Price') }}" value="" required="true" aria-required="true"/>
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Color') }}</label>
+  
+                        <select name="product_color_id" class="form-control" id="color" required>
+                          <option value="">--</option>
+                          @if ($productColors)
+                            @foreach ($productColors as $productColor)
+                              <option value="{{$productColor->id}}">{{$productColor->name}}</option>
+  
+                            @endforeach
+                              
+                          @endif
+                        </select>   
+                        
+                        
+                      </div>
+  
                     </div>
+                  
                   </div>
-                </div>
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Max Retail Price') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="max_retail_price" id="input-name" type="text" placeholder="{{ __('MRP') }}" value="" required="true" aria-required="true"/>
+                  <div class="row">
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Supplier Price') }}</label> <br>
+  
+                        <input type="text"  class="form-control" name="supplier_price" value="">
+                        
+                        
+                      </div>
+  
                     </div>
-                  </div>
-                </div>
-
-
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Description') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                        <textarea class="form-control" name="description"  rows="5"></textarea>
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Sell Price') }}</label> <br>
+  
+                        <input type="text"  class="form-control" name="max_retail_price" value="">
+ 
+                        
+                        
+                      </div>
+  
                     </div>
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Quantity') }}</label> <br>
+  
+                        <input type="text" class="form-control" name="available_stock" value="">
+                        
+                        
+                      </div>
+  
+                    </div>
+                  
                   </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
+  
+                      <div class="form-group">
+                        <label class="col-form-label">{{ __('Unit') }}  </label> <br>
+  
+                        <input type="text" class="form-control" name="name">
+                        
+                        
+                      </div>
+  
+                    </div>
+
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label  class="">Description</label>
+  
+                          <textarea class="form-control" name="description"  rows="5"></textarea>
+                      </div>
+                    </div>
+
+                  
+                  
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
+  
+                      <div class="">
+                        <label class="col-form-label">{{ __('Feature Image') }}</label> <br>
+  
+                        <input type="file" class="inputImg"  name="image" >
+                        
+                        
+                      </div>
+  
+                    </div>
+                    <div class="col-sm-4">
+  
+                      <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:150px; width:150px" alt="previewImage">
+
+  
+                    </div>
+                    <div class="col-sm-4">
+  
+                      <div class="">
+                        <label class="col-form-label">{{ __('Additional Images') }}</label> <br>
+  
+                        <input type="file" name="additional_images[]" multiple>
+                        
+                        
+                      </div>
+  
+                    </div>
+                  
+                  </div>
+
                 </div>
 
 
@@ -120,3 +230,35 @@
     </div>
   </div>
 @endsection
+
+
+@push('js')
+
+  <script>
+
+    $(document).ready(function(){
+
+      $('select').select2();
+      
+    })
+
+  </script>
+
+
+  <script>
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('.previewImg').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      $(".inputImg").change(function(){
+          readURL(this);
+      });
+  </script>
+      
+@endpush

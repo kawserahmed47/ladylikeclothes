@@ -36,6 +36,7 @@
                                                 <th>
                                                     Description
                                                 </th>
+                                                <th>Status</th>
                                                 <th>
                                                     Creation date
                                                 </th>
@@ -59,6 +60,16 @@
                                                 </td>
                                                 <td>
                                                    {{$product->description}}
+                                                </td>
+                                                <td>
+                                                    @if ($product->status ==1)
+                                                            <label class="badge badge-success">Active</label>
+
+                                                            @else
+
+                                                            <label class="badge badge-danger">Inactive</label>
+                                                                
+                                                            @endif
                                                 </td>
                                                 <td>
                                                     {{ date('Y-m-d h:i a ', strtotime( $product->updated_at))}}

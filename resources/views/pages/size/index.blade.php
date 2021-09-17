@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'productType', 'titlePage' => __('Product Type')])
+@extends('layouts.app', ['activePage' => 'productSize', 'titlePage' => __('Product Size')])
 
 @section('content')
     <div class="content">
@@ -13,34 +13,26 @@
                     <div class="card ">
 
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">{{ __('View Product Type') }}</h4>
-                            <p class="card-productType">{{ __('Product Type information') }}</p>
+                            <h4 class="card-title">{{ __('View Product Size') }}</h4>
+                            <p class="card-category">{{ __('Product Size information') }}</p>
                         </div>
 
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        <a href="{{route('productType.create')}}" class="btn btn-sm btn-primary">Add new</a>
+                                        <a href="{{route('productSize.create')}}" class="btn btn-sm btn-primary">Add new</a>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
                                             <tr>
-                                                <th>
-                                                    #SL
-                                                </th>
-                                                <th>
-                                                    Image
-                                                </th>
+                                                <th>#SL</th>
                                                 <th>
                                                     Name
                                                 </th>
                                                 <th>
                                                     Description
-                                                </th>
-                                                <th>
-                                                    Status
                                                 </th>
                                                 <th>
                                                     Creation date
@@ -52,57 +44,38 @@
                                         </thead>
                                         <tbody>
 
-                                            @if ($productTypes)
+                                            @if ($productSizes)
 
-                                                @foreach ($productTypes as $key=>$productType)
+                                                @foreach ($productSizes as $key=>$productSize)
                                                 <tr>
                                                     <td>
                                                         {{++$key}}
                                                     </td>
                                                     <td>
-
-                                                        @if ($productType->image)
-                                                            <img src="{{asset($productType->image)}}" class="img-thumbnail previewImg" style="height:100px; width:100px" alt="previewImage">
-                                                        @else
-                                                            <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:100px; width:100px" alt="previewImage">
-                                                        @endif
-
+                                                       {{$productSize->name}}
                                                     </td>
                                                     <td>
-                                                       {{$productType->name}}
-                                                    </td>
-                                                    <td> 
-                                                        {{$productType->description}}
+                                                        {{$productSize->description}}
                                                     </td>
                                                     <td>
-                                                        @if ($productType->status ==1)
-                                                            <label class="badge badge-success">Active</label>
+                                                        {{ date('Y-m-d h:i a ', strtotime( $productSize->updated_at))}}
 
-                                                        @else
-
-                                                            <label class="badge badge-danger">Inactive</label>
-                                                            
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        {{ date('Y-m-d h:i a ', strtotime( $productType->updated_at))}}
-    
                                                     </td>
                                                     <td class="td-actions text-right">
-                                                        <a rel="tooltip" class="btn btn-success btn-link" href="{{route('productType.edit', $productType->id)}}"
+                                                        <a rel="tooltip" class="btn btn-success btn-link" href="{{route('productSize.edit', $productSize->id)}}"
                                                             data-original-title="" title="Edit">
                                                             <i class="material-icons">edit</i>
                                                             <div class="ripple-container"></div>
                                                         </a><br>
-    
-                                                        <a rel="tooltip" class="btn btn-dark btn-link" href="{{route('productType.show', $productType->id)}}"
+
+                                                        <a rel="tooltip" class="btn btn-dark btn-link" href="{{route('productSize.show', $productSize->id)}}"
                                                             data-original-title="" title="View">
                                                             <i class="material-icons">visibility</i>
                                                             <div class="ripple-container"></div>
                                                         </a>
-    
-    
-                                                        <form method="POST"  action="{{route('productType.destroy', $productType->id)}}">
+
+
+                                                        <form method="POST"  action="{{route('productSize.destroy', $productSize->id)}}">
                                                             @csrf
                                                             @method('delete')
     
@@ -110,15 +83,15 @@
                                                                 <div class="ripple-container"></div></button>
     
                                                         </form>
-    
-    
+
+
                                                     </td>
                                                 </tr>
+    
                                                 @endforeach
                                                 
                                             @endif
-
-                                           
+                                            
 
 
                                         </tbody>

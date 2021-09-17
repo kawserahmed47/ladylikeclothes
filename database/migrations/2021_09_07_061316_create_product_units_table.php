@@ -18,10 +18,13 @@ class CreateProductUnitsTable extends Migration
 
             $table->bigInteger('product_id');
             $table->bigInteger('supplier_id');
+            $table->bigInteger('product_size_id');
+            $table->bigInteger('product_color_id');
+
+
 
             $table->string('name');
             
-            $table->string('slug')->unique()->nullable();
 
             $table->integer('packet_quantity')->default(0)->nullable();
 

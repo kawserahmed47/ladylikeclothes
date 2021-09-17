@@ -5,8 +5,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{url('/')}}" target="_blank" class="simple-text logo-normal">
+      {{ __('LADYLIKE CLOTHES') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -16,8 +16,34 @@
     <ul class="nav">
 
 
+      <li class="nav-item {{ ($activePage == 'profile') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#userProfile" aria-expanded="{{ ($activePage == 'profile') ? ' true' : '' }}">
+          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+          <p>{{ Auth::user()->name }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse {{ ($activePage == 'profile') ? ' show' : '' }}" id="userProfile">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('profile.edit') }}">
+                <span class="sidebar-mini"> UP </span>
+                <span class="sidebar-normal">{{ __('User profile') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}">
+                <span class="sidebar-mini"> UM </span>
+                <span class="sidebar-normal"> {{ __('Log Out') }} </span>
+              </a>
 
-      <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item  active">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
             <p>{{ __('Dashboard') }}</p>
@@ -29,25 +55,34 @@
 
 
 
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="{{ ($activePage == 'profile' || $activePage == 'user-management') ? ' true' : '' }}">
+      <li class="nav-item {{ ( $activePage == 'user-management') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#userManagement" aria-expanded="{{ ( $activePage == 'user-management') ? ' true' : '' }}">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
           <p>{{ __('User Management') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' show' : '' }}" id="laravelExample">
+        <div class="collapse {{ ( $activePage == 'user-management') ? ' show' : '' }}" id="userManagement">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('profile.edit') }}">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
-              </a>
-            </li>
+
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('user.index') }}">
                 <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('Users List') }} </span>
+                <span class="sidebar-normal"> {{ __('Roles') }} </span>
+              </a>
+            </li>
+
+            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('user.index') }}">
+                <span class="sidebar-mini"> UM </span>
+                <span class="sidebar-normal"> {{ __('Permissions') }} </span>
+              </a>
+            </li>
+            
+            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('user.index') }}">
+                <span class="sidebar-mini"> UM </span>
+                <span class="sidebar-normal"> {{ __('Users') }} </span>
               </a>
             </li>
           </ul>
@@ -95,7 +130,7 @@
 
 
 
-      <li class="nav-item {{ ($activePage == 'brand') ? ' active' : '' }}">
+      {{-- <li class="nav-item {{ ($activePage == 'brand') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="{{ ($activePage == 'brand') ? ' true' : '' }}">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
           <p>{{ __('Brand') }}
@@ -113,7 +148,7 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li> --}}
 
 
 
@@ -185,26 +220,44 @@
       </li>
 
 
-      <li class="nav-item {{ ($activePage == 'productUnit') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'productUnit' || $activePage == 'productSize' || $activePage == 'productColor' ) ? ' active' : '' }}">
 
-        <a class="nav-link" data-toggle="collapse" href="#productUnit" aria-expanded="{{ $activePage == 'productUnit' ? ' true' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#productUnit" aria-expanded="{{ $activePage == 'productUnit' || $activePage == 'productSize' || $activePage == 'productColor' ? ' true' : '' }}">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
           <p>{{ __('Product Unit') }}
             <b class="caret"></b>
           </p>
         </a>
 
-        <div class="collapse {{ $activePage == 'productUnit' ? ' show' : '' }}" id="productUnit">
+        <div class="collapse {{ $activePage == 'productUnit' || $activePage == 'productSize' || $activePage == 'productColor' ? ' show' : '' }}" id="productUnit">
           <ul class="nav">
+
+            <li class="nav-item{{ $activePage == 'productSize' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('productSize.index') }}">
+                <span class="sidebar-mini"> UM </span>
+                <span class="sidebar-normal"> {{ __('Product Sizes') }} </span>
+              </a>
+            </li>
+
+            <li class="nav-item{{ $activePage == 'productColor' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('productColor.index') }}">
+                <span class="sidebar-mini"> UM </span>
+                <span class="sidebar-normal"> {{ __('Product Colors') }} </span>
+              </a>
+            </li>
           
             <li class="nav-item{{ $activePage == 'productUnit' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('productUnit.index') }}">
                 <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('Product Units List') }} </span>
+                <span class="sidebar-normal"> {{ __('Product Units ') }} </span>
               </a>
             </li>
+
+
           </ul>
         </div>
+
+
       </li>
 
       <li class="nav-item {{ ($activePage == 'sellList' || $activePage == 'sellCreate' || $activePage == 'draftList' || $activePage == 'allSellsList' || $activePage == 'allDraftsList' ) ? ' active' : '' }}">
@@ -299,7 +352,7 @@
       </li>
 
 
-      <li class="nav-item {{ ($activePage == 'accounts' ) ? ' active' : '' }}">
+      {{-- <li class="nav-item {{ ($activePage == 'accounts' ) ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="{{ ($activePage == 'accounts' ) ? ' true' : '' }}">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
           <p>{{ __('Accounts Management') }}
@@ -332,7 +385,7 @@
 
           </ul>
         </div>
-      </li>
+      </li> --}}
 
 
 

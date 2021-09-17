@@ -42,6 +42,16 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                  <div class="col-sm-4">
+                      <input type="file" accept=".jpg, .jpeg, .png, .jfif"  name="image" class="inputImg">
+                  </div>
+                  <div class="col-sm-3 text-right">
+                    <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:150px; width:150px" alt="previewImage">
+                  </div>
+                </div>
+
 
 
               </div>
@@ -60,3 +70,38 @@
     </div>
   </div>
 @endsection
+
+
+
+@push('js')
+
+  <script>
+
+    $(document).ready(function(){
+
+      $('select').select2();
+
+
+      
+    })
+
+  </script>
+
+
+  <script>
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('.previewImg').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      $(".inputImg").change(function(){
+          readURL(this);
+      });
+  </script>
+      
+@endpush

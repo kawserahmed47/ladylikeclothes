@@ -22,8 +22,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        $data['brands'] = Brand::all();
-        $data['categories'] = Category::all();
+        // $data['brands'] = Brand::all();
+        $data['categories'] = Category::with('children', 'parent')->where('parent_id', 0)->where('status', 1)->get();
         $data['productTypes'] = ProductType::all();
         return view('pages.product.create', $data);
     }
@@ -31,7 +31,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
-        $product->slug = Str::slug($request->name, "-");
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
         $product->product_type_id = $request->product_type_id;
@@ -61,8 +60,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data['product'] = Product::find($id);
-        $data['brands'] = Brand::all();
-        $data['categories'] = Category::all();
+        // $data['brands'] = Brand::all();
+        $data['categories'] = Category::with('children', 'parent')->where('parent_id', 0)->where('status', 1)->get();
         $data['productTypes'] = ProductType::all();
         return view('pages.product.edit', $data);
     }
@@ -75,8 +74,9 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->product_type_id = $request->product_type_id;
         $product->name = $request->name;
-        $product->slug = Str::slug($request->name, "-");
         $product->description = $request->description;
+        $product->status = $request->status ? $request->status : 0;
+
         $product->updated_by = Auth::id();
         $product->save();
 

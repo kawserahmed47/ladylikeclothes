@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductColor;
+use App\Models\ProductSize;
 use App\Models\ProductUnit;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -41,8 +43,12 @@ class ProductUnitController extends Controller
 
     public function create()
     {
-        $data['products'] = Product::all();
-        $data['suppliers'] = Supplier::all();
+        $data['products'] = Product::where('status',1)->get();
+        $data['suppliers'] = Supplier::where('status',1)->get();
+        $data['productSizes'] = ProductSize::where('status',1)->get();
+        $data['productColors'] = ProductColor::where('status',1)->get();
+
+
         return view('pages.product_unit.create', $data);
     }
 
@@ -58,14 +64,14 @@ class ProductUnitController extends Controller
             $productUnit = new ProductUnit();
             $productUnit->product_id = $request->product_id;
             $productUnit->supplier_id = $request->supplier_id;
+            $productUnit->product_size_id = $request->product_size_id;
+            $productUnit->product_color_id = $request->product_color_id;
+
             $productUnit->name = $request->name;
-            $productUnit->slug = Str::slug($request->name, "-");
-            $productUnit->packet_quantity = $request->packet_quantity;
             $productUnit->available_stock = $request->available_stock;
             $productUnit->supplier_price = $request->supplier_price;
             $productUnit->max_retail_price = $request->max_retail_price; 
-            $productUnit->manufacture_date = $request->manufacture_date;
-            $productUnit->expiration_date = $request->expiration_date;
+   
             $productUnit->description = $request->description;
             $productUnit->created_by = Auth::id() ;
      
@@ -81,6 +87,23 @@ class ProductUnitController extends Controller
                   $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
                   $productUnit->barcode_view= $generator->getBarcode($gettingBarcode, $generator::TYPE_CODE_128);
               }
+
+
+
+              $image = $request->file('image');
+
+              if($image){
+      
+                  $image_name = Str::slug($request->name)."-".rand(100,999);
+                  $ext = strtolower($image->getClientOriginalExtension());
+                  $image_full_name=$image_name.".".$ext;
+                  $upload_path='uploads/feature/';
+                  $image_url=$upload_path.$image_full_name;
+                  $success=$image->move($upload_path,$image_full_name);
+                  if ($success) {
+                      $productUnit->image = $image_url;
+                  }
+              }
      
      
     
@@ -95,11 +118,15 @@ class ProductUnitController extends Controller
 
 
 
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
             DB::rollback();
+
+            $data['message'] = "Server Error";
+            $data['error'] = $ex;
+            return response()->json($data);
             // something went wrong
 
-            return redirect()->back();
+            // return redirect()->back();
         }
 
     }
@@ -116,8 +143,10 @@ class ProductUnitController extends Controller
 
     public function edit($id)
     {
-        $data['products'] = Product::all();
-        $data['suppliers'] = Supplier::all();
+        $data['products'] = Product::where('status',1)->get();
+        $data['suppliers'] = Supplier::where('status',1)->get();
+        $data['productSizes'] = ProductSize::where('status',1)->get();
+        $data['productColors'] = ProductColor::where('status',1)->get();
         $data['productUnit'] = ProductUnit::find($id);
         return view('pages.product_unit.edit', $data);
     }
@@ -140,14 +169,15 @@ class ProductUnitController extends Controller
         $productUnit = ProductUnit::find($id);
         $productUnit->product_id = $request->product_id;
         $productUnit->supplier_id = $request->supplier_id;
+        $productUnit->product_size_id = $request->product_size_id;
+        $productUnit->product_color_id = $request->product_color_id;
+
         $productUnit->name = $request->name;
-        $productUnit->slug = Str::slug($request->name, "-");
-        $productUnit->packet_quantity = $request->packet_quantity;
         $productUnit->available_stock = $request->available_stock;
         $productUnit->supplier_price = $request->supplier_price;
-        $productUnit->max_retail_price = $request->max_retail_price;
-        $productUnit->manufacture_date = $request->manufacture_date;
-        $productUnit->expiration_date = $request->expiration_date;
+        $productUnit->max_retail_price = $request->max_retail_price; 
+        $productUnit->status = $request->status ? $request->status : 0;
+
         $productUnit->description = $request->description;
         $productUnit->updated_by = Auth::id() ;
 
@@ -162,7 +192,28 @@ class ProductUnitController extends Controller
              if($gettingBarcode){
                  // This will output the barcode as HTML output to display in the browser
                  $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-                 $productUnit->barcodeView= $generator->getBarcode($gettingBarcode, $generator::TYPE_CODE_128);
+                 $productUnit->barcode_view= $generator->getBarcode($gettingBarcode, $generator::TYPE_CODE_128);
+             }
+
+
+
+             $image = $request->file('image');
+
+             if($image){
+
+                if($productUnit->image){
+                    unlink($productUnit->image);
+                }
+     
+                 $image_name = Str::slug($request->name)."-".rand(100,999);
+                 $ext = strtolower($image->getClientOriginalExtension());
+                 $image_full_name=$image_name.".".$ext;
+                 $upload_path='uploads/feature/';
+                 $image_url=$upload_path.$image_full_name;
+                 $success=$image->move($upload_path,$image_full_name);
+                 if ($success) {
+                     $productUnit->image = $image_url;
+                 }
              }
 
         $productUnit->save();
@@ -178,11 +229,12 @@ class ProductUnitController extends Controller
 
 
 
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
             DB::rollback();
             // something went wrong
-
-            return redirect()->back();
+            $data['message'] = "Server Error";
+            $data['error'] = $ex;
+            return response()->json($data);
         }
 
 

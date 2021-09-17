@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'caregory', 'titlePage' => __('Category')])
+@extends('layouts.app', ['activePage' => 'category', 'titlePage' => __('Category')])
 
 @section('content')
   <div class="content">
@@ -20,28 +20,55 @@
 
               <div class="card-body ">
 
-         
+               
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <input class="form-control" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="" required="true" aria-required="true"/>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input class="form-control" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="" required="true" aria-required="true"/>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Description') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                        <textarea class="form-control" name="description"  rows="5"></textarea>
+  
+  
+  
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">{{ __('Description') }}</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                            <textarea class="form-control" name="description"  rows="5"></textarea>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+  
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">{{ __('Parent Category') }}</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <select name="parent_id" class="form-control" >
+                            <option value="0">None</option>
+                            @if ($categories)
+                              @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                              @endforeach
+                            @endif
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                      <div class="col-sm-4">
+                          <input type="file" accept=".jpg, .jpeg, .png, .jfif"  name="image" class="inputImg">
+                      </div>
+                      <div class="col-sm-3 text-right">
+                        <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:150px; width:150px" alt="previewImage">
+                      </div>
+                    </div>
 
+             
 
 
               </div>
@@ -60,3 +87,36 @@
     </div>
   </div>
 @endsection
+
+@push('js')
+
+  <script>
+
+    $(document).ready(function(){
+
+      $('select').select2();
+
+
+      
+    })
+
+  </script>
+
+
+  <script>
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('.previewImg').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      $(".inputImg").change(function(){
+          readURL(this);
+      });
+  </script>
+      
+@endpush

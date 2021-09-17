@@ -3,23 +3,23 @@
     <nav class="float-left">
       <ul>
         <li>
-          <a href="https://www.creative-tim.com">
-              {{ __('Creative Tim') }}
+          <a href="{{url('/')}}">
+              {{ __('LADYLIKE CLOTHES') }}
           </a>
         </li>
         <li>
-          <a href="https://creative-tim.com/presentation">
+          <a href="{{url('/about-us')}}">
               {{ __('About Us') }}
           </a>
         </li>
         <li>
-          <a href="http://blog.creative-tim.com">
-              {{ __('Blog') }}
+          <a href="{{url('/contact-us')}}">
+              {{ __('Contact Us') }}
           </a>
         </li>
         <li>
-          <a href="https://www.creative-tim.com/license">
-              {{ __('Licenses') }}
+          <a href="{{url('/privacy-policy')}}">
+              {{ __('Privacy and Policy') }}
           </a>
         </li>
       </ul>
@@ -28,8 +28,7 @@
       &copy;
       <script>
         document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.
+      </script>| All right reserved by <a href="{{url('/')}}" target="_blank" rel="noopener noreferrer">LADYLIKE CLOTHES.</a> 
     </div>
   </div>
 </footer>

@@ -28,7 +28,29 @@ class ProductTypeController extends Controller
         $productType->name = $request->name;
         $productType->slug = Str::slug($request->name, "-");
         $productType->description = $request->description;
+
         $productType->created_by = Auth::id();
+
+
+        $image = $request->file('image');
+
+        if($image){
+
+
+            $image_name = Str::slug($request->name);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.".".$ext;
+            $upload_path='uploads/category/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if ($success) {
+                $productType->image = $image_url;
+            }
+        }
+
+
+
+
         $productType->save();
         return  redirect()->route('productType.index');
     }
@@ -54,7 +76,32 @@ class ProductTypeController extends Controller
         $productType->slug = Str::slug($request->name, "-");
         $productType->name = $request->name;
         $productType->description = $request->description;
+        $productType->status = $request->status ? $request->status : 0;
+
         $productType->updated_by = Auth::id();
+
+
+        $image = $request->file('image');
+
+        if($image){
+
+            if($productType->image){
+                unlink($productType->image);
+            }
+
+
+            $image_name = Str::slug($request->name);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.".".$ext;
+            $upload_path='uploads/category/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if ($success) {
+                $productType->image = $image_url;
+            }
+        }
+
+
         $productType->save();
         return  redirect()->route('productType.index');
     }

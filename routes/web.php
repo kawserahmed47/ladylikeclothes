@@ -8,7 +8,9 @@ use App\Http\Controllers\DraftController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductColorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ProductUnitController;
 use App\Http\Controllers\SellController;
@@ -91,6 +93,11 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 		Route::resource('product', ProductController::class);
 		Route::resource('productUnit', ProductUnitController::class);
 		Route::resource('sell', SellController::class);
+		Route::resource('productColor', ProductColorController::class);
+		Route::resource('productSize', ProductSizeController::class);
+
+
+
 
 		Route::get('all-sells', [SellController::class, 'allSells'])->name('sell.allSells');
 

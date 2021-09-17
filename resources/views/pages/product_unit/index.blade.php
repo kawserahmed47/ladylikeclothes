@@ -31,10 +31,16 @@
                                                     #SL
                                                 </th>
                                                 <th>
+                                                    Image
+                                                </th>
+                                                <th>
                                                     Name
                                                 </th>
                                                 <th>
                                                     Description
+                                                </th>
+                                                <th>
+                                                    Status
                                                 </th>
                                                 <th>
                                                     Creation date
@@ -54,10 +60,29 @@
                                                         {{++$key}}
                                                     </td>
                                                     <td>
+                                                        @if ($productUnit->image)
+                                                        <img src="{{asset($productUnit->image)}}" class="img-thumbnail previewImg" style="height:100px; width:100px" alt="previewImage">
+
+                                                        @else
+                                                        <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:100px; width:100px" alt="previewImage">
+
+                                                        @endif
+                                                    </td>
+                                                    <td>
                                                        {{$productUnit->name}}
                                                     </td>
                                                     <td>
                                                        {{$productUnit->description}}
+                                                    </td>
+                                                    <td>
+                                                        @if ($productUnit->status ==1)
+                                                                <label class="badge badge-success">Active</label>
+    
+                                                                @else
+    
+                                                                <label class="badge badge-danger">Inactive</label>
+                                                                    
+                                                                @endif
                                                     </td>
                                                     <td>
                                                         {{ date('Y-m-d h:i a ', strtotime( $productUnit->updated_at))}}
