@@ -76,7 +76,7 @@
                       <div class="form-group">
                         <label class="col-form-label">{{ __('Size') }}</label>
   
-                        <select name="product_size_id" class="form-control" id="size" required>
+                        <select name="product_size_id" class="form-control" id="size" >
                           <option value="">--</option>
                           @if ($productSizes)
                             @foreach ($productSizes as $productSize)
@@ -96,7 +96,7 @@
                       <div class="form-group">
                         <label class="col-form-label">{{ __('Color') }}</label>
   
-                        <select name="product_color_id" class="form-control" id="color" required>
+                        <select name="product_color_id" class="form-control" id="color" >
                           <option value="">--</option>
                           @if ($productColors)
                             @foreach ($productColors as $productColor)

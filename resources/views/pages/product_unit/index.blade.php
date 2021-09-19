@@ -40,10 +40,17 @@
                                                     Description
                                                 </th>
                                                 <th>
+                                                    Suppiler
+                                                </th>
+                                                <th>S.Price</th>
+                                                <th>MRP</th>
+                                                <th>Stock</th>
+                                                <th>Size/Color</th>
+                                                <th>
                                                     Status
                                                 </th>
                                                 <th>
-                                                    Creation date
+                                                   Date
                                                 </th>
                                                 <th class="text-right">
                                                     Actions
@@ -67,22 +74,40 @@
                                                         <img src="{{asset('not_found_image.png')}}" class="img-thumbnail previewImg" style="height:100px; width:100px" alt="previewImage">
 
                                                         @endif
+
+                                                        @if (count($productUnit->productUnitImage)>0)
+                                                            <a href="{{url('/view-more-image',$productUnit->id )}}" class="btn btn-link btn-sm btn-info">View More</a>
+                                                        @endif
+
                                                     </td>
                                                     <td>
-                                                       {{$productUnit->name}}
+                                                     {{$productUnit->product->name}}  {{$productUnit->name}}
                                                     </td>
                                                     <td>
                                                        {{$productUnit->description}}
                                                     </td>
+
+                                                    <td>
+                                                        {{$productUnit->supplier->name}}
+                                                    </td>
+                                                    <td>
+                                                        &#2547; {{$productUnit->supplier_price}}
+                                                    </td>
+                                                    <td>
+                                                       <span> &#2547;&nbsp;{{$productUnit->max_retail_price}} </span>
+                                                    </td>
+                                                    <td>
+                                                        {{$productUnit->available_stock}}
+                                                    </td>
+                                                    <td>
+                                                        {{$productUnit->productSize->name}} <span>/</span> {{$productUnit->productColor->name}}
+                                                    </td>
                                                     <td>
                                                         @if ($productUnit->status ==1)
-                                                                <label class="badge badge-success">Active</label>
-    
-                                                                @else
-    
-                                                                <label class="badge badge-danger">Inactive</label>
-                                                                    
-                                                                @endif
+                                                            <label class="badge badge-success">Active</label>
+                                                        @else
+                                                            <label class="badge badge-danger">Inactive</label>      
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         {{ date('Y-m-d h:i a ', strtotime( $productUnit->updated_at))}}

@@ -7,7 +7,7 @@
                         <div class="banner-content text-center">
                             <img src="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-                            <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
+                            <p>Subscribe to the LADYLIKE eCommerce newsletter to receive timely updates from your favorite products.</p>
                             <form action="#">
                                 <div class="input-group input-group-round">
                                     <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
@@ -16,10 +16,10 @@
                                     </div><!-- .End .input-group-append -->
                                 </div><!-- .End .input-group -->
                             </form>
-                            <div class="custom-control custom-checkbox">
+                            {{-- <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
                                 <label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
-                            </div><!-- End .custom-checkbox -->
+                            </div><!-- End .custom-checkbox --> --}}
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">

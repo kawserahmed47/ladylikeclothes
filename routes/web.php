@@ -35,8 +35,8 @@ Route::get('/how-to-shop', [FrontendController::class, 'howToShop'])->name('howT
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/sign-in', [FrontendController::class, 'login'])->name('sign-in');
 Route::get('/shop', [FrontendController::class, 'products'])->name('products');
-Route::get('/products-by-category/{slug}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
-Route::get('/product-details/{slug}', [FrontendController::class, 'productDetails'])->name('productDetails');
+Route::get('/products-by-category/{slug}/{id}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
+Route::get('/product-details/{slug}/{id}', [FrontendController::class, 'productDetails'])->name('productDetails');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('wishlist');
 
 Route::get('/payment-method', [FrontendController::class, 'paymentMethod'])->name('payment.method');

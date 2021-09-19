@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/demos/demo-7.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/skins/skin-demo-6.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/demos/demo-6.css">
+    <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/plugins/nouislider/nouislider.css">
+
 
 
     @stack('css')
@@ -92,6 +94,8 @@
     <script src="{{asset('frontend/assets')}}/js/jquery.hoverIntent.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/jquery.waypoints.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/superfish.min.js"></script>
+    <script src="{{asset('frontend/assets')}}/js/jquery.elevateZoom.min.js"></script>
+
     <script src="{{asset('frontend/assets')}}/js/bootstrap-input-spinner.js"></script>
     <script src="{{asset('frontend/assets')}}/js/owl.carousel.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/jquery.plugin.min.js"></script>
@@ -100,6 +104,10 @@
     <!-- Main JS File -->
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
     <script src="{{asset('frontend/assets')}}/js/demos/demo-7.js"></script>
+
+
+    <!-- Main JS File -->
+    <script src="{{asset('frontend/assets')}}/js/main.js"></script>
     @stack('js')
 </body>
 

@@ -70,27 +70,29 @@
                                     <div class="col-md-12">
                                         <div class="menu-col">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="menu-title">Sharee</div><!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="{{url('/products-by-category/joypuri')}}">Joypuri</a></li>
-                                                        <li><a href="{{url('/products-by-category/tangail')}}">Tangail</a></li>
-                                                    </ul>
 
+                                                @if ($categories)
 
-                                                   
-                                                </div><!-- End .col-md-6 -->
+                                                    @foreach ($categories as $category)
+                                                        <div class="col-md-6">
+                                                            <div class="menu-title">{{$category->name}}</div><!-- End .menu-title -->
+                                                           
+                                                            @if (count($category->children) > 0)
+                                                            <ul>
+                                                                @foreach ($category->children as $children)
+                                                                <li><a href="{{url('/products-by-category',[$children->slug,$children->id] )}}">{{$children->name}}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                           
+                                                        </div><!-- End .col-md-6 -->
+                                                    @endforeach
+                                                    
+                                                @endif
 
-                                                <div class="col-md-6">
-                                                    <div class="menu-title">3 PCS</div><!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="{{url('/products-by-category/batik')}}">Batik</a></li>
-                                                        <li><a href="{{url('/products-by-category/jorjet')}}">Jorjet</a></li>
-                                                    </ul>
-
-
-                                                   
-                                                </div><!-- End .col-md-6 -->
+                                               
+                                                
+                                                <!-- End .col-md-6 -->
                                             </div><!-- End .row -->
                                         </div><!-- End .menu-col -->
                                     </div><!-- End .col-md-8 -->

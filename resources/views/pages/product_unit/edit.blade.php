@@ -223,7 +223,6 @@
   
                         <input type="file" name="additional_images[]" multiple>
                         
-                        
                       </div>
   
                     </div>

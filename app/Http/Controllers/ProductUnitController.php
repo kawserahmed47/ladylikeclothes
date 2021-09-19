@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\ProductUnit;
+use App\Models\ProductUnitImage;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ class ProductUnitController extends Controller
     
     public function index()
     {
-        $data['productUnits'] = ProductUnit::all();
+        $data['productUnits'] = ProductUnit::with('product', 'product', 'productSize', 'productColor' , 'productUnitImage')->orderBy('id', 'DESC')->get();
         return view('pages.product_unit.index', $data);
     }
 
@@ -216,7 +217,55 @@ class ProductUnitController extends Controller
                  }
              }
 
+            
+
         $productUnit->save();
+
+        $additionalImages =   $request->file('additional_images');
+
+        if($additionalImages){
+
+            $unitImages = ProductUnitImage::where('product_unit_id', $id)->get();
+
+            if($unitImages){
+                foreach($unitImages as $unitImage){
+
+                    if($unitImage->image){
+                        unlink($unitImage->image);
+                        ProductUnitImage::where('id',$unitImage->id)->delete();
+                    }
+
+                }
+            }
+
+
+
+            foreach($additionalImages as $additionalImage){
+
+                if($additionalImage){
+
+                    $unitImage = new ProductUnitImage();
+                    $unitImage->product_unit_id = $id;
+                    $additionalImage_name = Str::slug($request->name)."-".rand(100,999);
+                    $ext = strtolower( $additionalImage->getClientOriginalExtension());
+                    $additionalImage_full_name= $additionalImage_name.".".$ext;
+                    $upload_path='uploads/units/';
+                    $additionalImage_url=$upload_path. $additionalImage_full_name;
+                    $success= $additionalImage->move($upload_path, $additionalImage_full_name);
+                     if ($success) {
+                        $unitImage->image =  $additionalImage_url;
+                        $unitImage->save();
+                     }
+
+
+
+                 }
+
+            }
+
+
+
+        }
  
 
 
