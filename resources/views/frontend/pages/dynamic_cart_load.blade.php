@@ -20,23 +20,23 @@
                         <td class="product-col">
                             <div class="product">
                                 <figure class="product-media">
-                                    <a href="#">
-                                        <img src="{{asset('frontend/assets')}}/images/products/table/product-1.jpg" alt="Product image">
+                                    <a href="{{url('product-details', [$item->name, $key])}}">
+                                        <img src="{{asset($item->attributes->image)}}" style="height: 100px" alt="Product image">
                                     </a>
                                 </figure>
     
                                 <h3 class="product-title">
-                                    <a href="#">{{$item->name}}</a>
+                                    <a href="{{url('product-details', [$item->name, $key])}}">{{$item->name}}</a>
                                 </h3><!-- End .product-title -->
                             </div><!-- End .product -->
                         </td>
-                        <td class="price-col">{{$item->price}}</td>
+                        <td class="price-col"> &#2547;&nbsp; {{$item->price}}</td>
                         <td class="quantity-col">
                             <div class="cart-product-quantity">
                                 <input type="number" onchange="updateItem({{$key}})" class="form-control quantity-{{$key}}" value="{{$item->quantity}}" min="1" max="10" step="1" data-decimals="0" required>
                             </div><!-- End .cart-product-quantity -->
                         </td>
-                        <td class="total-col">{{$item->getPriceSum()}}</td>
+                        <td class="total-col"> &#2547;&nbsp;{{$item->getPriceSum()}}</td>
                         <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
                     </tr>
                     @endforeach
@@ -62,7 +62,7 @@
                 <tbody>
                     <tr class="summary-subtotal">
                         <td>Subtotal:</td>
-                        <td>{{$getSubTotal}}</td>
+                        <td> &#2547;&nbsp;{{$getSubTotal}}</td>
                     </tr><!-- End .summary-subtotal -->
                   
 
@@ -70,7 +70,7 @@
 
                     <tr class="summary-total">
                         <td>Total:</td>
-                        <td>{{$getSubTotal}}</td>
+                        <td> &#2547;&nbsp;{{$getSubTotal}}</td>
                     </tr><!-- End .summary-total -->
                 </tbody>
             </table><!-- End .table table-summary -->

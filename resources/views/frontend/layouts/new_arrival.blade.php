@@ -54,7 +54,7 @@
                                                                             </div><!-- End .product-action-vertical -->
 
                                                                             <div class="product-action">
-                                                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                                                <button onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
                                                                             </div><!-- End .product-action -->
                                                                         </figure><!-- End .product-media -->
 
@@ -96,7 +96,7 @@
                 </div><!-- End .tab-content -->
 
                 <div class="more-container text-center mt-2">
-                    <a href="#" class="btn btn-outline-dark-3 btn-more"><span>See more</span><i class="icon-long-arrow-right"></i></a>
+                    <a href="{{url('/shop')}}" class="btn btn-outline-dark-3 btn-more"><span>See more</span><i class="icon-long-arrow-right"></i></a>
                 </div><!-- End .more-container -->
 
             </div>

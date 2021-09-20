@@ -128,6 +128,25 @@
         </div>
       </li>
 
+      <li class="nav-item {{ ($activePage == 'slider') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#slider" aria-expanded="{{ ($activePage == 'slider') ? 'true' : '' }}">
+          <i class="fa fa-folder"></i>
+          <p>{{ __('Slider') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse {{ ($activePage == 'slider') ? ' show' : '' }}" id="slider">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'slider' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('slider.index') }}">
+                <span class="sidebar-mini"> <i class="fa fa-file"></i> </span>
+                <span class="sidebar-normal"> {{ __('Slider') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
 
 
       {{-- <li class="nav-item {{ ($activePage == 'brand') ? ' active' : '' }}">

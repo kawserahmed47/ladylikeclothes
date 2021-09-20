@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Darryldecode\Cart\Cart;
+use App\Models\Slider;
 
 class CartController extends Controller
 {
@@ -31,6 +32,8 @@ class CartController extends Controller
         $data['categories']= Category::with(array('children'=>function($q){
             $q->with('parent', 'children')->get();
         }))->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Cart";
         return view('frontend.pages.cart', $data);
 
     }
@@ -55,6 +58,8 @@ class CartController extends Controller
         $data['categories']= Category::with(array('children'=>function($q){
             $q->with('parent', 'children')->get();
         }))->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Checkout";
         // $data['customer'] = User::with('customer')->where('id', Auth::id())->first();
         return view('frontend.pages.checkout', $data);
 

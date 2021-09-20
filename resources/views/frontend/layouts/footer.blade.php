@@ -76,9 +76,10 @@
 
                         <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan.</p>
                         
-                        <form action="#">
+                        <form class="subscribeForm" method="POST">
+                            @csrf
                             <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
                                 <div class="input-group-append">
                                     <button class="btn btn-dark" type="submit"><i class="icon-long-arrow-right"></i></button>
                                 </div><!-- .End .input-group-append -->

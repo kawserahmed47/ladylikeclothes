@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\ProductUnit;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -18,13 +19,19 @@ class FrontendController extends Controller
             $q->with('parent', 'children')
             ->with(array('product'=>function($q1){
                 $q1->with(array('productUnits'=>function($q2){
-                    $q2->where('status', 1)->inRandomOrder()->limit(15)->get();
+                    $q2->where('status', 1)->limit(15)->get();
                 }))->where('status', 1)->get();
             }))
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
         
-    
+        $data['productTypeTops']= ProductType::where('status', 1)->limit(3)->orderBy('id', 'asc')->get();
+        $data['productTypeBottoms']= ProductType::where('status', 1)->orderBy('id', 'desc')->first();
+
+        $data['dealOfTheDays'] = ProductUnit::with('product', 'productUnitImage')->inRandomOrder()->limit(2)->get();
+
+        $data['sliders'] = Slider::where('status', 1)->get();
+
         return view('frontend.pages.index', $data);
     }
 
@@ -35,6 +42,8 @@ class FrontendController extends Controller
         
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="About Us";
         return view('frontend.pages.about', $data);
     }
 
@@ -47,6 +56,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Contact Us";
         return view('frontend.pages.contact', $data);
 
     }
@@ -58,6 +69,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Wishlist";
         return view('frontend.pages.wishlist', $data);
     }
 
@@ -68,6 +81,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Profile";
         return view('frontend.pages.profile', $data);
     }
 
@@ -79,6 +94,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Cart";
         return view('frontend.pages.cart', $data);
     }
 
@@ -89,6 +106,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Checkout";
         return view('frontend.pages.checkout', $data);
     }
 
@@ -99,6 +118,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Track Order";
         return view('frontend.pages.track_order', $data);
     }
 
@@ -115,6 +136,9 @@ class FrontendController extends Controller
             $q1->with('category')->get();
         }))->paginate(9);
 
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="All Products";
+
         // return response()->json($data, 200);
         return view('frontend.pages.products', $data);
         
@@ -129,8 +153,30 @@ class FrontendController extends Controller
 
         $data['products'] = Product::with('productUnits', 'category')->where('category_id', $id)->where('status', 1)->get();
 
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Category";
 
         return view('frontend.pages.products_by_category', $data);
+    }
+
+    public function productByParentCategory($slug, $id){
+
+        $data = array();
+
+        $data['categories']= Category::with(array('children'=>function($q){
+            $q->with('parent', 'children')->get();
+        }))->where('status', 1)->where('parent_id', 0)->get();
+
+        $childrenCategories = Category::where('parent_id', $id)->where('status',1)->select('id')->get();
+
+        $data['products'] = Product::with('productUnits', 'category')->whereIn('category_id', $childrenCategories)->where('status', 1)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Category";
+      
+
+        // return response()->json($data, 200);
+        return view('frontend.pages.products_by_category', $data);
+
     }
 
 
@@ -164,6 +210,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="How to Shop";
         return view('frontend.pages.how_to_shop', $data);
     }
 
@@ -175,6 +223,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="FAQ";
         return view('frontend.pages.faq', $data);
 
     }
@@ -196,6 +246,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Payment Method";
         return view('frontend.pages.payment_methods', $data);
     }
 
@@ -206,6 +258,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Money Back Guaranty";
         return view('frontend.pages.money_back', $data);
     }
 
@@ -216,6 +270,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Returns Policy";
         return view('frontend.pages.return', $data);
     }
 
@@ -226,6 +282,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Shipping Information";
         return view('frontend.pages.shipping', $data);
     }
 
@@ -236,6 +294,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Tears and Conditions";
         return view('frontend.pages.conditions', $data);
     }
 
@@ -246,6 +306,8 @@ class FrontendController extends Controller
             
             ->get();
         }))->where('status', 1)->where('parent_id', 0)->get();
+        $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
+        $data['title'] ="Privacy";
         return view('frontend.pages.privacy', $data);
     }
 

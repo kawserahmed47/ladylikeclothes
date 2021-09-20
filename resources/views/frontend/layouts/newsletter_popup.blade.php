@@ -8,9 +8,10 @@
                             <img src="{{asset('frontend/assets')}}/images/icons/favicon_img.jpg" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
                             <p>Subscribe to the LADYLIKE eCommerce newsletter to receive timely updates from your favorite products.</p>
-                            <form action="#">
+                            <form class="subscribeForm" method="POST">
+                                @csrf
                                 <div class="input-group input-group-round">
-                                    <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
+                                    <input type="email" name="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
                                     <div class="input-group-append">
                                         <button class="btn" type="submit"><span>go</span></button>
                                     </div><!-- .End .input-group-append -->

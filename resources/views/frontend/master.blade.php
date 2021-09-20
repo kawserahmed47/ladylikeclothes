@@ -85,6 +85,9 @@
 
 
 
+    <script type="text/javascript">
+        var APP_URL = {!! json_encode(url('/')) !!}
+      </script>
 
 
 
@@ -105,9 +108,12 @@
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
     <script src="{{asset('frontend/assets')}}/js/demos/demo-7.js"></script>
 
-
+  <!--  Plugin for Sweet Alert -->
+  <script src="{{ asset('material') }}/js/plugins/sweetalert2.js"></script>
     <!-- Main JS File -->
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
+    <script src="{{asset('frontend')}}/ajax.js"></script>
+
     @stack('js')
 </body>
 

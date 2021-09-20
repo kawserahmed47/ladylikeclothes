@@ -14,6 +14,8 @@ use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ProductUnitController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,9 @@ Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/sign-in', [FrontendController::class, 'login'])->name('sign-in');
 Route::get('/shop', [FrontendController::class, 'products'])->name('products');
 Route::get('/products-by-category/{slug}/{id}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
+
+Route::get('/products-by/{slug}/{id}', [FrontendController::class, 'productByParentCategory' ]);
+
 Route::get('/product-details/{slug}/{id}', [FrontendController::class, 'productDetails'])->name('productDetails');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('wishlist');
 
@@ -48,6 +53,8 @@ Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('pri
 
 Route::get('/track-order', [FrontendController::class, 'trackMyOrder'])->name('trackOrder');
 
+
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
 Auth::routes();
 
@@ -86,6 +93,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 		Route::resource('supplier', SupplierController::class);
 		Route::resource('customer', CustomerController::class);
 
+		Route::resource('slider', SliderController::class);
 
 		Route::resource('brand', BrandController::class);
 		Route::resource('category', CategoryController::class);

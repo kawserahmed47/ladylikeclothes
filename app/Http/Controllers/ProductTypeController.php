@@ -26,7 +26,6 @@ class ProductTypeController extends Controller
     {
         $productType = new ProductType();
         $productType->name = $request->name;
-        $productType->slug = Str::slug($request->name, "-");
         $productType->description = $request->description;
 
         $productType->created_by = Auth::id();
@@ -73,7 +72,6 @@ class ProductTypeController extends Controller
     public function update(Request $request, $id)
     {
         $productType =  ProductType::find($id);
-        $productType->slug = Str::slug($request->name, "-");
         $productType->name = $request->name;
         $productType->description = $request->description;
         $productType->status = $request->status ? $request->status : 0;

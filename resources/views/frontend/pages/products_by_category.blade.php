@@ -1,23 +1,7 @@
 @extends('frontend.master')
 @section('content')
 
-<div class="container">
-    <div class="page-header page-header-big text-center" style="background-image: url('{{asset('frontend/assets')}}/images/contact-header-bg.jpg')">
-        <h1 class="page-title text-white">Category<span class="text-white">--</span></h1>
-    </div><!-- End .page-header -->
-</div><!-- End .container -->
-
-
-<nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page">Shop</li>
-            <li class="breadcrumb-item active" aria-current="page">Category</li>
-        </ol>
-    </div><!-- End .container -->
-</nav><!-- End .breadcrumb-nav -->
-
+@include('frontend.layouts.page_header')
 
 
 <div class="page-content">
@@ -65,7 +49,7 @@
                                     </div><!-- End .product-action -->
         
                                     <div class="product-action action-icon-top">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <button  onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
         

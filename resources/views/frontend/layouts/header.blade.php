@@ -133,12 +133,14 @@
                 </div><!-- End .header-search -->
                 
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <a href="{{url('/view-cart')}}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                         <i class="icon-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </a>
 
-                @include('frontend.layouts.cart')
+                    <div class="dropdown-menu dropdown-menu-right cartBar">
+  
+                    </div>
                     
                     
                     <!-- End .dropdown-menu -->

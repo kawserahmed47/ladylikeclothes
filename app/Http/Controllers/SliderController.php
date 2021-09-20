@@ -4,82 +4,113 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class SliderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $data['sliders'] = Slider::all();
+        return view('pages.slider.index',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('pages.slider.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $slider = new Slider();
+        $slider->name = $request->name;
+        $slider->description = $request->description;
+
+        $slider->created_by = Auth::id();
+
+
+        $image = $request->file('image');
+
+        if($image){
+
+
+            $image_name = Str::slug($request->name);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.".".$ext;
+            $upload_path='uploads/sliders/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if ($success) {
+                $slider->image = $image_url;
+            }
+        }
+
+
+
+
+        $slider->save();
+        return  redirect()->route('slider.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Slider $slider)
+
+    public function show($id)
     {
-        //
+        $data['slider'] = Slider::find($id);
+        return view('pages.slider.show', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Slider $slider)
+
+    public function edit($id)
     {
-        //
+        $data['slider'] = Slider::find($id);
+        return view('pages.slider.edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Slider $slider)
+
+    public function update(Request $request, $id)
     {
-        //
+        $slider =  Slider::find($id);
+        $slider->name = $request->name;
+        $slider->description = $request->description;
+        $slider->status = $request->status ? $request->status : 0;
+
+        $slider->updated_by = Auth::id();
+
+
+        $image = $request->file('image');
+
+        if($image){
+
+            if($slider->image){
+                unlink($slider->image);
+            }
+
+
+            $image_name = Str::slug($request->name);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.".".$ext;
+            $upload_path='uploads/slider/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if ($success) {
+                $slider->image = $image_url;
+            }
+        }
+
+
+        $slider->save();
+        return  redirect()->route('slider.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Slider $slider)
+
+    public function destroy($id)
     {
-        //
+        $slider = Slider::find($id);
+        $slider->delete();
+        return  redirect()->route('slider.index');
+
     }
 }
