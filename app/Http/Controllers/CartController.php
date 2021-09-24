@@ -17,7 +17,6 @@ class CartController extends Controller
         $data['items'] = \Cart::getContent();
         return view('pages.cart', $data);
         
-        
         // return response()->json($data,200);
 
     }

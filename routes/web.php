@@ -37,6 +37,13 @@ Route::get('/how-to-shop', [FrontendController::class, 'howToShop'])->name('howT
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/sign-in', [FrontendController::class, 'login'])->name('sign-in');
 Route::get('/shop', [FrontendController::class, 'products'])->name('products');
+
+Route::get('/products-by-search',[FrontendController::class, 'productsBySearch']);
+
+Route::get('/products-by-filter', [FrontendController::class, 'productsByFilter']);
+
+
+
 Route::get('/products-by-category/{slug}/{id}', [FrontendController::class, 'productsByCategory'])->name('productsByCategory');
 
 Route::get('/products-by/{slug}/{id}', [FrontendController::class, 'productByParentCategory' ]);
@@ -55,6 +62,14 @@ Route::get('/track-order', [FrontendController::class, 'trackMyOrder'])->name('t
 
 
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
+Route::post('/customer-register', [CustomerController::class, 'store'])->name('customer.register');
+Route::get('/customer-profile', [CustomerController::class, 'customerProfile'])->name('customer.profile')->middleware('auth');
+Route::post('/customer-login', [CustomerController::class, 'customerLogin'])->name('customer.login');
+
+Route::post('/forget-password', [CustomerController::class, 'forgetPassword'])->name('customer.forgetPassword');
+Route::post('/reset-password', [CustomerController::class, 'resetPassword'])->name('customer.resetPassword');
+Route::post('/customer-profile-update', [CustomerController::class, 'profileUpdate'])->name('customer.profileUpdate');
+
 
 Auth::routes();
 
@@ -91,7 +106,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 		
 		Route::resource('employee', EmployeeController::class);
 		Route::resource('supplier', SupplierController::class);
-		Route::resource('customer', CustomerController::class);
+		// Route::resource('customer', CustomerController::class);
 
 		Route::resource('slider', SliderController::class);
 

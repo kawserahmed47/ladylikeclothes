@@ -48,10 +48,12 @@
                                                                                 <img src="{{asset($unit->image)}}" style="height: 350px"  alt="Product image" class="product-image-hover">
                                                                             </a>
 
-                                                                            <div class="product-action-vertical">
+                                                                            {{-- <div class="product-action-vertical">
                                                                                 <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                                                 <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                                            </div><!-- End .product-action-vertical -->
+                                                                            </div> --}}
+                                                                            
+                                                                            <!-- End .product-action-vertical -->
 
                                                                             <div class="product-action">
                                                                                 <button onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
@@ -64,12 +66,15 @@
                                                                                 <span class="new-price"> &#2547;&nbsp;{{$unit->max_retail_price}} </span>
                                                                                 {{-- <span class="old-price">$84.00</span> --}}
                                                                             </div><!-- End .product-price -->
-                                                                            <div class="ratings-container">
+
+                                                                            {{-- <div class="ratings-container">
                                                                                 <div class="ratings">
                                                                                     <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
                                                                                 </div><!-- End .ratings -->
                                                                                 <span class="ratings-text">( 4 Reviews )</span>
-                                                                            </div><!-- End .rating-container -->
+                                                                            </div> --}}
+                                                                            
+                                                                            <!-- End .rating-container -->
                                                                         </div><!-- End .product-body -->
                                                                     </div><!-- End .product -->
                                                                 </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->

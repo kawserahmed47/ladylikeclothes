@@ -16,50 +16,80 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+
+                          
+
+                           @if (Auth::check())
+                          
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <label>First Name *</label>
-                                    <input type="text" class="form-control" required>
-                                </div><!-- End .col-sm-6 -->
+                                    <div class="col-sm-12">
+                                        <label>Full Name *</label>
+                                        <input type="text" name="name" value="{{Auth::user()->name}}" class="form-control" required>
+                                    
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
 
-                                <div class="col-sm-6">
-                                    <label>Last Name *</label>
-                                    <input type="text" class="form-control" required>
-                                </div><!-- End .col-sm-6 -->
-                            </div><!-- End .row -->
-
-                            <label>Company Name (Optional)</label>
-                            <input type="text" class="form-control">
 
 
                             <label>Full address *</label>
-                            <input type="text" class="form-control" placeholder="" required>
+                            <input type="text" name="address" class="form-control" placeholder="" required>
 
-                       
+                    
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>Email address *</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control" required>
                                 </div><!-- End .col-sm-6 -->
 
                                 <div class="col-sm-6">
-                                    <label>Phone *</label>
-                                    <input type="tel" class="form-control" required>
+                                    <label>Mobile Number *</label>
+                                    <input type="tel" name="mobile" value="{{Auth::user()->mobile}}" class="form-control" required>
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
-                           
+                           @else 
+
+                           <div class="row">
+                            <div class="col-sm-12">
+                                <label>Full Name *</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .row -->
+
+
+
+                        <label>Full address *</label>
+                        <input type="text" name="address" class="form-control" placeholder="" required>
+
+                   
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Email address *</label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div><!-- End .col-sm-6 -->
+
+                            <div class="col-sm-6">
+                                <label>Mobile Number *</label>
+                                <input type="tel" name="mobile" class="form-control" required>
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .row -->
 
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
+                                <input type="checkbox" name="create_account" class="custom-control-input" id="checkout-create-acc">
                                 <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
                             </div><!-- End .custom-checkbox -->
+                           
+                           
+                           @endif
+
+                          
 
                           
 
                             <label>Order notes (optional)</label>
-                            <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+                            <textarea class="form-control" name="description" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3">
                         <div class="summary">

@@ -70,9 +70,10 @@
                                                                 <img src="{{$unit->image}}"  style="height: 350px" alt="Product image" class="product-image-hover">
                                                             </a>
                                 
-                                                            <div class="product-action-vertical">
+                                                            {{-- <div class="product-action-vertical">
                                                                 <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                            </div><!-- End .product-action-vertical -->
+                                                            </div> --}}
+                                                            <!-- End .product-action-vertical -->
                                 
                                                             <div class="product-action">
                                                                 <button  onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
@@ -85,12 +86,14 @@
                                                                <span>  &#2547;&nbsp;{{$unit->max_retail_price}}</span> 
                                                             </div><!-- End .product-price -->
 
-                                                            <div class="ratings-container">
+                                                            {{-- <div class="ratings-container">
                                                                 <div class="ratings">
                                                                     <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
                                                                 </div><!-- End .ratings -->
                                                                 <span class="ratings-text">( 2 Reviews )</span>
-                                                            </div><!-- End .rating-container -->
+                                                            </div> --}}
+                                                            
+                                                            <!-- End .rating-container -->
 
 
                                                         </div><!-- End .product-body -->

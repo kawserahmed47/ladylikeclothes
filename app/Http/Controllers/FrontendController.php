@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductColor;
+use App\Models\ProductSize;
 use App\Models\ProductType;
 use App\Models\ProductUnit;
 use App\Models\Slider;
@@ -136,12 +138,93 @@ class FrontendController extends Controller
             $q1->with('category')->get();
         }))->paginate(9);
 
+        $data['sizes'] = ProductSize::where('status', 1)->get();
+        $data['colors'] = ProductColor::where('status', 1)->get();
+
+
+
+
         $data['slider'] = Slider::where('status', 1)->inRandomOrder()->first();
         $data['title'] ="All Products";
 
         // return response()->json($data, 200);
         return view('frontend.pages.products', $data);
         
+    }
+
+
+    public function productsByFilter(Request $request){
+
+        $categories = $request->category;
+
+        
+
+        $price_range = $request->price_range;
+
+        if($price_range == 1 ){
+            $start_price = 100;
+            $end_price = 500;
+        }elseif($price_range == 2){
+            $start_price = 501;
+            $end_price = 1000;
+        }elseif($price_range == 3){
+            $start_price = 1001;
+            $end_price = 2000;
+        }else{
+            $price_range = false;
+        }
+
+
+        $color = $request->color;
+        $size = $request->size;
+
+        $products = array();
+
+        if($categories){
+            $products = Product::whereIn('category_id', $categories)->select('id')->get();
+        }
+
+        $query = ProductUnit::with(array('product'=>function($q1){
+            $q1->with('category')->get();
+        }));
+
+        if($price_range){
+            $query->whereBetween('max_retail_price', [$start_price, $end_price]);
+        }
+
+        if($color){
+            $query->whereIn('product_color_id', $color);
+        }
+
+        if($size){
+            $query->whereIn('product_size_id', $size);
+        }
+
+        if($products){
+            $query->whereIn('product_id', $products);
+        }
+
+        $data['products']=$query->paginate(9);
+
+        return view('frontend.pages.load_products', $data);
+
+
+    }
+
+    public function productsBySearch(Request $request){
+        $searchKey = $request->search;
+
+        $product = Product::where('name', 'LIKE', "%$searchKey%" )->select('id')->get();
+
+        $data['products'] = ProductUnit::with(array('product'=>function($q1){
+            $q1->with('category')->get();
+        }))
+        ->whereIn('product_id', $product)
+        ->limit(6)->inRandomOrder()->get();
+
+        return view('frontend.layouts.search_bar', $data);
+
+
     }
 
     public function productsByCategory($slug, $id){

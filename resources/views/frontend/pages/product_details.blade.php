@@ -50,12 +50,14 @@
                     <div class="product-details">
                         <h1 class="product-title">{{$unit->product->name}} {{$unit->name}}</h1><!-- End .product-title -->
 
-                        <div class="ratings-container">
+                        {{-- <div class="ratings-container">
                             <div class="ratings">
                                 <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
                             </div><!-- End .ratings -->
                             <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
-                        </div><!-- End .rating-container -->
+                        </div> --}}
+                        
+                        <!-- End .rating-container -->
 
                         <div class="product-price">
                             &#2547;&nbsp;{{$unit->max_retail_price}}
@@ -109,9 +111,11 @@
                         <div class="product-details-action">
                             <button  onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
 
-                            <div class="details-action-wrapper">
+                            {{-- <div class="details-action-wrapper">
                                 <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
-                            </div><!-- End .details-action-wrapper -->
+                            </div> --}}
+                            
+                            <!-- End .details-action-wrapper -->
                         </div><!-- End .product-details-action -->
 
                         <div class="product-details-footer">
@@ -121,13 +125,15 @@
     
                             </div><!-- End .product-cat -->
 
-                            <div class="social-icons social-icons-sm">
+                            {{-- <div class="social-icons social-icons-sm">
                                 <span class="social-label">Share:</span>
                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                 <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                 <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                            </div>
+                            </div> --}}
+
+
                         </div><!-- End .product-details-footer -->
                     </div><!-- End .product-details -->
                 </div><!-- End .col-md-6 -->
@@ -143,9 +149,9 @@
                     <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
                 </li>
               
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
-                </li>
+                </li> --}}
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
@@ -162,7 +168,8 @@
                       
                     </div><!-- End .product-desc-content -->
                 </div><!-- .End .tab-pane -->
-          
+
+{{--           
                 <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
                     <div class="reviews">
                         <h3>Reviews (2)</h3>
@@ -193,32 +200,24 @@
                         </div><!-- End .review -->
 
                         <div class="review">
-                            <div class="row no-gutters">
-                                <div class="col-auto">
-                                    <h4><a href="#">John Doe</a></h4>
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                    </div><!-- End .rating-container -->
-                                    <span class="review-date">5 days ago</span>
-                                </div><!-- End .col -->
-                                <div class="col">
-                                    <h4>Very good</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
 
-                                    <div class="review-content">
-                                        <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
-                                    </div><!-- End .review-content -->
+                                    </div>
 
-                                    <div class="review-action">
-                                        <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
-                                        <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                    </div><!-- End .review-action -->
-                                </div><!-- End .col-auto -->
-                            </div><!-- End .row -->
-                        </div><!-- End .review -->
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
                     </div><!-- End .reviews -->
-                </div><!-- .End .tab-pane -->
+                </div> --}}
+                
+                
+                <!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
         </div><!-- End .product-details-tab -->
 
@@ -261,9 +260,11 @@
                             <img src="{{asset($unit->image)}}" style="height: 300px" alt="Product image" class="product-image">
                         </a>
     
-                        <div class="product-action-vertical">
+                        {{-- <div class="product-action-vertical">
                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                        </div><!-- End .product-action-vertical -->
+                        </div> --}}
+                        
+                        <!-- End .product-action-vertical -->
     
                         <div class="product-action">
                             <button onclick="addToCart({{$unit->id}})" class="btn-product btn-cart"><span>add to cart</span></button>
@@ -278,12 +279,14 @@
                         <div class="product-price">
                             &#2547;&nbsp;{{$unit->max_retail_price}}
                         </div><!-- End .product-price -->
-                        <div class="ratings-container">
+                        {{-- <div class="ratings-container">
                             <div class="ratings">
                                 <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
                             </div><!-- End .ratings -->
                             <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
+                        </div> --}}
+                        
+                        <!-- End .rating-container -->
     
                 
                     </div><!-- End .product-body -->

@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/skins/skin-demo-6.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/demos/demo-6.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/plugins/nouislider/nouislider.css">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.css')}}">
 
 
 
@@ -108,8 +109,8 @@
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
     <script src="{{asset('frontend/assets')}}/js/demos/demo-7.js"></script>
 
-  <!--  Plugin for Sweet Alert -->
-  <script src="{{ asset('material') }}/js/plugins/sweetalert2.js"></script>
+    <!--  Plugin for Sweet Alert -->
+    <script src="{{ asset('material') }}/js/plugins/sweetalert2.js"></script>
     <!-- Main JS File -->
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
     <script src="{{asset('frontend')}}/ajax.js"></script>

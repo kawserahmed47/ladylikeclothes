@@ -11,7 +11,7 @@ use App\Models\Customer;
 use App\Models\ProductUnit;
 use App\Models\Sell;
 use App\Models\OrderDetails;
-
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -43,8 +43,46 @@ class OrderController extends Controller
             $order = new Order();
             $order->order_no = rand(100000,9999999);
     
-            if($request->customer_id){
-                $order->customer_id = $request->customer_id;
+            if(Auth::check()){
+                $order->user_id = Auth::id();
+
+                $customer = Customer::where('user_id', Auth::id())->first();
+                if($customer){
+                    $order->customer_id = $customer->id;
+                    $order->customer_id_no = $customer->id_no;
+                }
+            }else if($request->create_account){
+
+               
+
+                if(User::where('email', $request->email)->exists()){
+                    $user =  User::where('email', $request->email)->first();
+
+                }else if(User::where('mobile', $request->mobile)->exists()){
+                    $user =  User::where('mobile', $request->mobile)->first();
+                }else{
+                    $user =  new User();
+                }
+               
+
+              
+                $user->role_id = 2;
+                $user->permission_id = 1;
+                $user->email = $request->email;
+                $user->mobile = $request->mobile;
+                $user->name = $user->name;
+
+                if($user->save()){
+
+
+                    
+                    $order->user_id = $user->id;
+
+                 
+                }
+
+
+
             }
     
     
@@ -71,8 +109,41 @@ class OrderController extends Controller
                             $orderDetails->order_id = $order->id;
                             $orderDetails->order_no = $order->order_no;
     
-                            if($request->customer_id){
-                                $orderDetails->customer_id = $request->customer_id;
+                            if(Auth::check()){
+                
+                                $customer = Customer::where('user_id', Auth::id())->first();
+                                if($customer){
+                                    $orderDetails->customer_id = $customer->id;
+                                    $orderDetails->customer_id_no = $customer->id_no;
+                                }
+                            }else if($user->id){
+
+                                
+                                    if(Customer::where('email', $request->email)->exists()){
+                                        $customer =  Customer::where('email', $request->email)->first();
+
+                                    }else if(Customer::where('mobile', $request->mobile)->exists()){
+                                        $customer =  Customer::where('mobile', $request->mobile)->first();
+                                    }else{
+                                        $customer =  new Customer();
+                                    }
+
+
+                                $customer->user_id = $user->id;
+                                $customer->id_no = rand(100000,99999);
+                                $customer->name = $request->name;
+                                $customer->email = $request->email;
+                                $customer->mobile = $request->mobile;
+                                $customer->address = $request->address;
+
+                                if($customer->save()){
+                                    $orderDetails->customer_id = $customer->id;
+                                    $orderDetails->customer_id_no = $customer->id_no;
+                                }
+
+
+
+
                             }
     
                             $orderDetails->supplier_id = $product->supplier_id;

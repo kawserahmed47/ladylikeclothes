@@ -1,3 +1,7 @@
+<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+
 <header class="header header-7">
 
 
@@ -21,24 +25,47 @@
             </div><!-- End .header-left -->
 
             <div class="header-right">
-                <ul class="top-menu">
+
+             
+                {{-- <ul class="top-menu">
                     <li>
                         <a href="#">Links</a>
                         <ul>
                             <li><a href="{{url('wishlist')}}"><i class="icon-heart-o"></i>My Wishlist <span>(0)</span></a></li>
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="fa fa-sign-in"></i>Login /</a></li>
+                         
                         </ul>
                     </li>
-                </ul><!-- End .top-menu -->
-                <div class="header-dropdown">
-                    <a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp; Username </a></a>
-                    <div class="header-menu">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-cog"></i>&nbsp;&nbsp;PROFILE</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;LOGOUT</a></li>
-                        </ul>
-                    </div><!-- End .header-menu -->
-                </div><!-- End .header-dropdown -->
+                </ul> --}}
+                <!-- End .top-menu -->
+
+                @if (Auth::check())
+                    <div class="header-dropdown">
+                        <a href="{{url('/customer-profile')}}"><i class="fa fa-user"></i>&nbsp;&nbsp; Username </a></a>
+                        <div class="header-menu">
+                            <ul>
+                                <li><a href="{{url('/customer-profile')}}"><i class="fa fa-cog"></i>&nbsp;&nbsp;PROFILE</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                        <i class="fa fa-sign-out"></i>&nbsp;&nbsp;LOGOUT
+                                    </a>
+                                </li>
+                            </ul>
+                                
+                           
+                        </div><!-- End .header-menu -->
+                    </div>
+
+                @else 
+
+                    <div class="header-dropdown">
+                        <a href="#signin-modal" data-toggle="modal"><i class="fa fa-sign-in"></i> 	&nbsp;Login</a>
+                    </div>
+                @endif
+
+               
+
+
+
             </div><!-- End .header-right -->
         </div><!-- End .container-fluid -->
     </div>
@@ -100,6 +127,8 @@
           
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu megamenu-md -->
+
+
                         </li>
 
                        
@@ -123,14 +152,25 @@
             <div class="header-right">
                 <div class="header-search header-search-extended header-search-visible">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+
+
                     <form action="#" method="get">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="search" id="qsearch" placeholder="Search product ..." required>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
                         </div><!-- End .header-search-wrapper -->
                     </form>
-                </div><!-- End .header-search -->
+
+                    <div class="loadSearchBar">
+
+                    </div>
+
+                    {{-- @include('frontend.layouts.search_bar') --}}
+
+
+                </div>
+
                 
                 <div class="dropdown cart-dropdown">
                     <a href="{{url('/view-cart')}}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
